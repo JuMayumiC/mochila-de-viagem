@@ -4,6 +4,11 @@ html {
     font-family: 'Roboto', cursive;
 }
 
+.titulo {
+    text-align: center;
+    color: #e9c6da;
+}
+
 .conteudo {
     padding: 10vh 3em 0;
     display: flex;
