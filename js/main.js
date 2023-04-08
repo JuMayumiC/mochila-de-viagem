@@ -21,9 +21,9 @@ form.addEventListener("submit", (evento) => {
 
     if (existe) {
         itemAtual.id = existe.id
-        
-        atualizaElemento(itemAtual)
 
+        atualizaElemento(itemAtual)
+//Refatoração da condicional if else, atualizando um id para cada item
         itens[itens.findIndex(elemento => elemento.id === existe.id)] = itemAtual
     } else {
         itemAtual.id = itens[itens.length -1] ? (itens[itens.length-1]).id + 1 : 0;
@@ -47,10 +47,10 @@ function criaElemento(item) {
     numeroItem.innerHTML = item.quantidade
     numeroItem.dataset.id = item.id
     novoItem.appendChild(numeroItem)
-    
+
     novoItem.innerHTML += item.nome
 
-    novoItem.appendChild(botaoDeleta(item.id))
+    novoItem.appendChild(botaoDeleta(item.id)) // Referenciar a função botaoDeleta no nó da função principal
 
     lista.appendChild(novoItem)
 }
@@ -59,6 +59,7 @@ function atualizaElemento(item) {
     document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade
 }
 
+//Função para criar botão com evento de click nos itens, e retornar os itens clicados
 function botaoDeleta(id) {
     const elementoBotao = document.createElement("button")
     elementoBotao.innerText = "X"
@@ -70,7 +71,9 @@ function botaoDeleta(id) {
     return elementoBotao
 }
 
-function deletaElemento(tag, id) {
+//Função para deletar os itens enviados da função botaoDeleta no array de itens e no navegador
+
+function deletaElemento(tag, id) { 
     tag.remove()
 
     itens.splice(itens.findIndex(elemento => elemento.id === id), 1)
